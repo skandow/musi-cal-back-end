@@ -1,0 +1,2 @@
+class EnsemblesController < ApplicationController
+end
