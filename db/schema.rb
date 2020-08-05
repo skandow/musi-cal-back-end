@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2020_08_04_180152) do
 
   create_table "events", force: :cascade do |t|
     t.integer "ensemble_id"
+    t.string "title"
     t.string "start_time"
     t.string "end_time"
     t.string "place"

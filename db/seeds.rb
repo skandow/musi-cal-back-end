@@ -60,14 +60,16 @@ AROLES = ["none", "none", "none", "President", "Vice-President", "Secretary", "T
 end
 
 EVENT = ["Rehearsal", "Rehearsal", "Rehearsal", "Rehearsal", "Performance"]
-STARTDATES = ["Tuesday, September 1 at 7:00 PM", "Wednesday, September 2 at 7:00 PM", "Thursday, September 3 at 7:00 PM", "Friday, September 4 at 7:00 PM", "Saturday, September 5 at 7:00 PM"]
-ENDDATES = ["Tuesday, September 1 at 9:00 PM", "Wednesday, September 2 at 9:00 PM", "Thursday, September 3 at 9:00 PM", "Friday, September 4 at 9:00 PM", "Saturday, September 5 at 9:00 PM"]
+STARTDATES = ["Tuesday, September 1, 2020 7:00 PM", "Wednesday, September 2, 2020 7:00 PM", "Thursday, September 3, 2020 7:00 PM", "Friday, September 4, 2020 7:00 PM", "Saturday, September 5, 2020 7:00 PM"]
+ENDDATES = ["Tuesday, September 1, 2020 9:00 PM", "Wednesday, September 2, 2020 9:00 PM", "Thursday, September 3, 2020 9:00 PM", "Friday, September 4, 2020 9:00 PM", "Saturday, September 5, 2020 9:00 PM"]
 BOOLEANSAMPLE = [true, false]
 
 Ensemble.all.each do |ensemble|
     event_counter = 0 
-    while event_counter < EVENT.length do 
+    while event_counter < EVENT.length do
+        title = ensemble.name + " " + EVENT[event_counter] 
         event = Event.create(ensemble_id: ensemble.id,
+        title: title,
         start_time: STARTDATES[event_counter],
         end_time: ENDDATES[event_counter],
         place: "Shell Auditorium",
