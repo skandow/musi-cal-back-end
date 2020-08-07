@@ -7,11 +7,19 @@ class User < ApplicationRecord
     validates :email, uniqueness: { case_sensitive: false }
 
     def admin_for 
-        self.memberships.select do |membership|
+        admined_ensemble = self.memberships.select do |membership|
             membership.admin == true 
         end.map do |membership|
             membership.ensemble
-        end 
+        end
+    end 
+
+    def admined_members 
+        admin_for.map do |ensemble|
+            ensemble.memberships.map do |membership|
+                membership.membership_data
+            end 
+        end.flatten 
     end 
 
     def not_admin 
