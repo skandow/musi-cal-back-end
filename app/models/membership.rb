@@ -7,6 +7,7 @@ class Membership < ApplicationRecord
         {
             id: self.id,
             ensemble_id: self.ensemble_id,
+            admin: self.admin,
             image_url: user.image_url,
             user: self.user.name,
             email: self.user.email,

@@ -12,14 +12,16 @@ class User < ApplicationRecord
         end.map do |membership|
             membership.ensemble
         end
+        admined_ensemble.sort_by(&:id)
     end 
 
     def admined_members 
         admin_for.map do |ensemble|
-            ensemble.memberships.map do |membership|
+            sorted_memberships = ensemble.memberships.sort_by(&:created_at)
+            sorted_memberships.map do |membership|
                 membership.membership_data
             end 
-        end.flatten 
+        end.flatten
     end 
 
     def not_admin 
