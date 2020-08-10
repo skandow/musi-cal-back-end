@@ -4,7 +4,6 @@ class MembershipsController < ApplicationController
         user = User.find_by(email: params[:email])
         membership.user_id = user.id 
         membership.save
-        p membership
         if membership.valid?
             render json: {user: UserSerializer.new(current_user) }
         else 
