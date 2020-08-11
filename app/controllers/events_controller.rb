@@ -7,7 +7,7 @@ class EventsController < ApplicationController
             UserEvent.create(
                 user_id: membership.user_id,
                 event_id: event.id,
-                attending: "unknown",
+                attending: "undeclared",
                 attended: false
             )
         end 

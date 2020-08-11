@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   resources :events, only: [:create, :update, :destroy]
   resources :memberships, only: [:create, :update, :destroy]
   resources :ensembles, only: [:create, :update, :destroy]
+  resources :user_events, only: [:update]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
