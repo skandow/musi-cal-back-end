@@ -5,6 +5,15 @@ class MembershipsController < ApplicationController
         membership.user_id = user.id 
         membership.save
         if membership.valid?
+            events = membership.ensemble.events
+            events.each do |event| 
+            UserEvent.create(
+                user_id: membership.user_id,
+                event_id: event.id,
+                attending: "undeclared",
+                attended: false
+            )
+        end 
             render json: {user: UserSerializer.new(current_user) }
         else 
             render json: { error: 'failed to create membership'}, status: :not_acceptable
