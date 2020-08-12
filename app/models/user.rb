@@ -24,18 +24,18 @@ class User < ApplicationRecord
         end.flatten
     end 
 
-    def not_admin 
-        self.memberships.select do |membership|
-            membership.admin == false 
-        end.map do |membership|
-            membership.ensemble 
-        end 
-    end
-
     def admined_events 
         admin_for.map do |ensemble|
             ensemble.events
         end.flatten
     end 
+
+    def admined_user_events 
+        admined_events.map do |event|
+            event.user_events.map do |user_event|
+                user_event.data 
+            end 
+        end.flatten 
+    end
 
 end
