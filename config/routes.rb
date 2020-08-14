@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       resources :users, only: [:create, :update, :destroy]
       post '/login', to: 'auth#create'
       get '/profile', to: 'users#profile'
+      post '/search', to: 'users#search'
     end
   end 
   resources :events, only: [:create, :update, :destroy]

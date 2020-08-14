@@ -24,6 +24,25 @@ class Api::V1::UsersController < ApplicationController
         end 
     end 
 
+    def search 
+        users = User.all 
+        if params[:nameSearch] 
+            users = users.filter do |user|
+                user.name.downcase.include?(params[:nameSearch].downcase)
+            end 
+        end 
+        if params[:emailSearch] 
+            users = users.filter do |user| 
+                user.email.downcase.include?(params[:emailSearch].downcase.split('@')[0])
+            end 
+        end 
+        if users.length == 0 
+            render json: { error: 'no users match'}
+        else 
+            render json: users 
+        end  
+    end 
+
     def destroy 
         user = User.find(params[:id])
         user.destroy 
