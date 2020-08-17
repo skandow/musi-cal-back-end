@@ -72,7 +72,9 @@ Ensemble.all.each do |ensemble|
         title: title,
         start_time: STARTDATES[event_counter],
         end_time: ENDDATES[event_counter],
-        place: "Shell Auditorium",
+        place: "Shell Auditorium, Loop Road, Houston, TX, USA",
+        lat: 29.7175365,
+        lng: -95.4029734,
         description: "You better be here!",
         mandatory: BOOLEANSAMPLE.sample)
         ensemble.users.each do |user|
